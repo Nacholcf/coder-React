@@ -1,27 +1,23 @@
-import {BsCart3} from "react-icons/bs";
+import "./NavBar.css";
+import { CartWidget } from "../CartWidget/CartWidget";
+
 
 export const NavBar = () => {
     return (
-        <header>
+        <header className="navbar">
             <div className='container'>
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                    }}
+                <div className="navbar__content"
                 >
                     <img 
+                    className="navbar__logo"
                     src={"https://hillsideclothes.000webhostapp.com/img/hillsidelogo.png"
                     } 
-                    className="logo" 
-                    alt="Vite logo" 
                     />
-                    <span style={{ fontSize: 18, fontWeight: 'bolder' }}>Tienda</span>
-                    <BsCart3 style={{fontSize: 30, color: 'orange' }} />
-                    <nav>
+                    <nav className="navbar__items">
                         <a>Remeras</a>
                         <a>Buzos</a>
                     </nav>
+                    <CartWidget />
                 </div>
             </div>
         </header>

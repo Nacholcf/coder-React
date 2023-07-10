@@ -1,63 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { NavBar } from './components/NavBar/NavBar'
-import { Item } from './components/item/item';
+/* import "./nombredelarchivo.css" */
+import { NavBar, ItemCount, ItemListContainer } from './components';
+import {Home} from "./pages/Home";
 
 
 //Etiquetas de apertura y cierre div div o auto cierre img
 //images import reactlogo from '../assets/react.svg'
 //className en lugar de class 
+//se escapa js con {}
 //Estilos son un objeto {} que puede estar en la estructura del componente o directamente en la etiqueta/componente
 //Eventos y estilos en camelCase
 
-
-
 function App() {
-  const [count, setCount] = useState(0)
-  const numero = 5; 
-  const styleButton = {
-    marginTop: '25px',
-  };
+  const handleCart = (qty)=>{
+    console.log("La cantidad es", qty)
+  }
 
   return (
-    
     <div>
       <NavBar />
-      <div className='container'>
-        <Item />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={"https://hillsideclothes.000webhostapp.com/img/hillsidelogo.png"} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="container">
+      <ItemListContainer greeting={"Hillside"}/> 
       </div>
-
-      <span style= {{
-        display: 'block',
-        fontSize: "10rem",
-
-      }}> {numero} </span>
-
-      <h1>Coder React</h1>
-
-      <div className="card">
-        <button style={styleButton} onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* <Home /> */}
+      <div className="container">
+      <ItemCount stock={10} onAdd={handleCart}/>
       </div>
     </div>
-  )
+  );
 }
-
+     
 export default App 
