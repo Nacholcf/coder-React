@@ -1,22 +1,30 @@
 import { useState, useEffect } from "react";
+import { getProductos } from "../lib/productos.request";
+import { ItemListContainer } from "../components";
 
 export const Home = () => {
     const [products, setProducts]   = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=> {
-        console.log("Montando");
+
+        getProductos()
+        .then(res => {
+        setIsLoading(false);
+        setProducts(res)}
+
+        )
+
     }, []);
 
-    useEffect(()=> {
-        if(products.length) console.log({products})
-    }, [products]);
 
     return  (
     <div> 
        Pagina Principal
-       <button onClick={() => setProducts([...products, "Producto uno", "Producto dos"])}>
-       Agregar Productos
-       </button>
+       <div className="container">
+       <h5>{isLoading ? "Cargando ..." : "Listo"}</h5>
+       <ItemListContainer products={products} />
+       </div>
     </div>
   );
 };

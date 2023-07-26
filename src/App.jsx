@@ -1,7 +1,8 @@
 import './App.css'
 /* import "./nombredelarchivo.css" */
-import { NavBar, ItemCount, ItemListContainer } from './components';
+import { NavBar, ItemCount, ItemListContainer, Item } from './components';
 import {Home} from "./pages/Home";
+import { Detail } from "./pages/Detail";
 
 
 //Etiquetas de apertura y cierre div div o auto cierre img
@@ -19,14 +20,15 @@ function App() {
   return (
     <div>
       <NavBar />
-      <div className="container">
-      <ItemListContainer greeting={"Hillside"}/> 
-      </div>
       {/* <Home /> */}
-      <div className="container">
-      <ItemCount stock={10} onAdd={handleCart}/>
+      <Detail />
+
+
+      {/*  <div className="container">
+        <ItemCount stock={10} onAdd={handleCart} />
+      </div> */}
+      {/*   <ItemCount stock={0} onAdd={handleCart} /> */}
       </div>
-    </div>
   );
 }
      
