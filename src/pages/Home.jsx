@@ -20,9 +20,8 @@ export const Home = () => {
 
     return  (
     <div> 
-       Pagina Principal
        <div className="container">
-       <h5>{isLoading ? "Cargando ..." : "Listo"}</h5>
+       <h5>{isLoading ? "Cargando ..." : "Productos"}</h5>
        <ItemListContainer products={products} />
        </div>
     </div>

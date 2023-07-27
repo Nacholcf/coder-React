@@ -1,27 +1,33 @@
 import { useEffect, useState } from "react";
 import { ItemCount } from "../components";
 import { getProducto } from "../lib/productos.request";
+import { useParams } from "react-router-dom";
 
 export const Detail = () => {
+    const {id} = useParams();
     const [producto, setProducto] = useState({});
 
     useEffect(() => {
-        getProducto().then((res) => {
+        getProducto(+id).then((res) => {
             setProducto(res);
           });
     }, []);
+
+    if(!Object.keys(producto).length) return
 
     return (
         <div className="container">
             <div className="detail">
                 <div className="detail__img">
-                <img src={producto.img} /></div>
+                <img src={producto.img} />
+                </div>
                 <div className="detail__info">
                 <span className="detail__info-title">{producto.title} </span> 
                 <p className="detail__info-description">{producto.description}</p>
+
                 <span className="detail__info-price">
                  $
-                {(producto.price || 0).toLocaleString("es-CO", {
+                {(producto.price || 0).toLocaleString("es-MX", {
                  minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
                 })}
