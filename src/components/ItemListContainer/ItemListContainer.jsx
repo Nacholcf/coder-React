@@ -1,4 +1,4 @@
-import { Item } from "../item/item";
+import { Item } from "../Item/Item";
 import "./ItemListContainer.css";
 
 
