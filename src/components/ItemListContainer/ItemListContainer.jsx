@@ -2,9 +2,23 @@ import { Item } from "../Item/Item";
 import "./ItemListContainer.css";
 
 
-export const ItemListContainer = ({ products }) => (
+export const ItemListContainer = ({ products, loading = false }) => (
     <div className="item-list">
-      {products.map((product) => (
+       {loading ? (
+        <>
+
+       <div className="skeleton">
+          <div className="skeleton__img"></div>
+        </div>
+        <div className="skeleton">
+          <div className="skeleton__img"></div>
+        </div>
+        <div className="skeleton">
+          <div className="skeleton__img"></div>
+        </div>
+      </>
+     ) : (
+      products.map((product) => (
         <Item
           key={product.id}
           // Normal
@@ -15,6 +29,7 @@ export const ItemListContainer = ({ products }) => (
           price={product.price}
           // {...product}
         />
-      ))}
+      ))
+      )}
     </div>
   );

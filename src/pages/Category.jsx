@@ -7,24 +7,21 @@ export const Category = () => {
     const {id} = useParams();
     const [products, setProducts] = useState([]); 
     const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
-  
-    getProductos(id) 
-      .then(res => {
+      setProducts([]);
+      setIsLoading(true);
+      getProductos(id).then((res) => {
         setIsLoading(false); 
-        setProducts(res)} 
-        
-        ) 
+        setProducts(res);
+      });
     }, [id]);
-  
   
     return (
       <div>
         <div className="container">
-          <h5>{isLoading ? "Cargando ..." : "Listo"}</h5>
-          <ItemListContainer products={products} />
+          <ItemListContainer products={products} loading={isLoading}  />
         </div>
       </div>
     );
-
-}
+};
